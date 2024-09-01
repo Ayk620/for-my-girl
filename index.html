@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('path-to-your-background-image.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for the content */
+            border-radius: 10px; /* Rounded corners for the content area */
+            max-width: 600px; /* Optional: Limit the width of the content area */
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+            position: relative; /* Required for absolute positioning of buttons */
+        }
+        .header_text {
+            color: #333;
+            margin: 20px 0;
+        }
+        .gif_container {
+            margin: 20px 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .buttons {
+            display: flex; /* Flexbox for horizontal alignment */
+            justify-content: center; /* Center buttons horizontally */
+            gap: 20px; /* Space between buttons */
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white; /* Text color */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for better visibility */
+            position: relative; /* Ensure buttons are positioned correctly */
+        }
+        #yesButton {
+            background-color: #4CAF50; /* Green color for "Yes" button */
+        }
+        #noButton {
+            background-color: #f44336; /* Red color for "No" button */
+        }
+    </style>
+</head> 
+<body>
+    <div class="container">
+        <div>
+            <h1 class="header_text">Do you love me?</h1>
+        </div>
+        <div class="gif_container">
+            <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHIxb3RnY3o1bDNyZDF3aWI1bWcwZ3RqZzRpY3ZwdXVwdW5uajZzbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/dEZKOYuY4oQhMOZGEU/giphy.gif" alt="GIF">
+        </div>
+        <div class="buttons">
+            <button class="btn" id="yesButton" onclick="nextPage()">Yes</button>
+            <button class="btn" id="noButton" onclick="moveButton()">No</button>
+        </div>
+        <script>
+            function nextPage() {
+                // Adjust the path if necessary
+                window.location.href = "yes.html";
+            }
+            
+            function moveButton() {
+                console.log('Move button function triggered');
+                const button = document.getElementById('noButton');
+                const buttonWidth = button.offsetWidth;
+                const buttonHeight = button.offsetHeight;
+                const viewportWidth = window.innerWidth;
+                const viewportHeight = window.innerHeight;
+
+                const maxX = viewportWidth - buttonWidth - 20; // 20px padding from right edge
+                const maxY = viewportHeight - buttonHeight - 20; // 20px padding from bottom edge
+
+                const x = Math.random() * maxX;
+                const y = Math.random() * maxY;
+
+                button.style.position = 'absolute'; // Ensure the button is absolutely positioned
+                button.style.left = `${x}px`;
+                button.style.top = `${y}px`;
+            }
+        </script> 
+    </div>
+</body> 
+</html>
